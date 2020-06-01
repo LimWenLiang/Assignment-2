@@ -33,11 +33,10 @@ public class Main {
                     final String population = row.select("td:nth-child(14)").text();
 
                     String format = "%3s\t%-25s%-14s%-12s%-12s%-10s%-14s%-15s%-12s%-12s%-10s%-15s%-12s%s%n";
-                    System.out.printf(format, number, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered, activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
-
+                    System.out.printf(format, number, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
+                            activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
                 }
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
