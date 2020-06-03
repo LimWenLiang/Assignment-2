@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 public class ListCoronaCases {
 
@@ -16,60 +17,117 @@ public class ListCoronaCases {
     private final String ChinaCase = "China";
     private Document document;
     private RegexMatches regexMatches;
+    String format = "%9s\t%-12s%-12s%-12s%-11s%-14s%-12s%-12s%-14s%-12s%-10s%-12s%s%n";
 
-    public void main() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
+    public void main() throws Exception {
+
         regexMatches = new RegexMatches();
-        String format = "%9s\t%-12s%-12s%-12s%-11s%-14s%-12s%-12s%-14s%-12s%-10s%-12s%s%n";
+        Scanner input = new Scanner(System.in);
+        boolean stop = true;
+        int access;
 
-        try {
+        document = Jsoup.connect(CoronaCasesLink).get();
+        displayTime();
 
-            document = Jsoup.connect(CoronaCasesLink).get();
-            String title = document.title();
-            System.out.println(title);
-            System.out.println("Current Time: " + dateFormat.format(date) + "\n");
-            System.out.printf(format, "       ", "Total", "New", "Total", "New", "Total", "Active", "Serious", "Tot Cases/", "Deaths/", "Total", "Tests/", "          ");
-            System.out.printf(format, "Country", "Cases", "Cases", "Death", "Death", "Recovered", "Cases", "Critical", "1M pop", "1M pop", "Tests", "1M pop", "Population");
-            System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+        do {
+            System.out.println("------------Main Menu------------");
+            System.out.println("1. View Coronavirus Update (Live)");
+            System.out.println("2. Exit");
+            System.out.printf("Please select your choice: ");
+            access = input.nextInt();
+            System.out.println("");
 
-            Elements CoronaCases = document.select("div#nav-today.tab-pane.active tr");
-            for (Element row : CoronaCases) {
-                final String country = row.select("td:nth-child(2)").text();
-                final String totalCases = row.select("td:nth-child(3)").text();
-                final String newCases = row.select("td:nth-child(4)").text();
-                final String totalDeaths = row.select("td:nth-child(5)").text();
-                final String newDeaths = row.select("td:nth-child(6)").text();
-                final String totalRecovered = row.select("td:nth-child(7)").text();
-                final String activeCases = row.select("td:nth-child(8)").text();
-                final String seriousCritical = row.select("td:nth-child(9)").text();
-                final String totCases_1Mpop = row.select("td:nth-child(10)").text();
-                final String deaths_1Mpop = row.select("td:nth-child(11)").text();
-                final String totalTests = row.select("td:nth-child(12)").text();
-                final String tests_1Mpop = row.select("td:nth-child(13)").text();
-                final String population = row.select("td:nth-child(14)").text();
+            if (access == 1) {
+                displayTitle();
 
-                // display Malaysia cases
-                if (regexMatches.isMatch(MalaysiaCase, country) == true) {
-                    System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
-                            activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
-                }
+                do {
 
-                // display Indonesia cases
-                if (regexMatches.isMatch(IndonesiaCase, country) == true) {
-                    System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
-                            activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
-                }
+                    Elements CoronaCases = document.select("div#nav-today.tab-pane.active tr");
+                    System.out.println("1. Malaysia");
+                    System.out.println("2. Indonesia");
+                    System.out.println("3. China");
+                    System.out.println("4. Return Main Menu");
+                    System.out.printf("Please select your choice(1/2/3/4): ");
+                    int number = input.nextInt();
+                    System.out.println("");
 
-                // display China cases
-                if (regexMatches.isMatch(ChinaCase, country) == true) {
-                    System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
-                            activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
-                }
+                    for (Element row : CoronaCases) {
+                        final String country = row.select("td:nth-child(2)").text();
+                        final String totalCases = row.select("td:nth-child(3)").text();
+                        final String newCases = row.select("td:nth-child(4)").text();
+                        final String totalDeaths = row.select("td:nth-child(5)").text();
+                        final String newDeaths = row.select("td:nth-child(6)").text();
+                        final String totalRecovered = row.select("td:nth-child(7)").text();
+                        final String activeCases = row.select("td:nth-child(8)").text();
+                        final String seriousCritical = row.select("td:nth-child(9)").text();
+                        final String totCases_1Mpop = row.select("td:nth-child(10)").text();
+                        final String deaths_1Mpop = row.select("td:nth-child(11)").text();
+                        final String totalTests = row.select("td:nth-child(12)").text();
+                        final String tests_1Mpop = row.select("td:nth-child(13)").text();
+                        final String population = row.select("td:nth-child(14)").text();
+
+                        if (number == 1) {
+                            // display Malaysia cases
+                            if (regexMatches.isMatch(MalaysiaCase, country) == true) {
+                                displayCasesTitle();
+                                System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
+                                        activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
+                                System.out.println("");
+                            }
+                        } else if (number == 2) {
+                            // display Indonesia cases
+                            if (regexMatches.isMatch(IndonesiaCase, country) == true) {
+                                displayCasesTitle();
+                                System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
+                                        activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
+                                System.out.println("");
+                            }
+                        } else if (number == 3) {
+                            // display China cases
+                            if (regexMatches.isMatch(ChinaCase, country) == true) {
+                                displayCasesTitle();
+                                System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
+                                        activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
+                                System.out.println("");
+                            }
+                        } else if (number == 4) {
+                            stop = false;
+                        } else {
+                            System.out.println("Invalid input, please try again.\n");
+                            Thread.sleep(1000);
+                            break;
+                        }
+                    }
+
+                } while (stop != false);
+
+            } else if (access == 2) {
+                System.out.println("Good Bye.");
+                System.out.println("#StayHomeStaySafe");
+            } else {
+                System.out.println("Invalid input, please try again.\n");
+                Thread.sleep(1000);
+
             }
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
+        } while (access != 2);
+
+    }
+
+    public void displayTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        System.out.println("Access Time: " + dateFormat.format(date) + "\n");
+    }
+
+    public void displayTitle() {
+        String title = document.title();
+        System.out.println(title);
+    }
+
+    public void displayCasesTitle() {
+        System.out.printf(format, "       ", "Total", "New", "Total", "New", "Total", "Active", "Serious", "Tot Cases/", "Deaths/", "Total", "Tests/", "          ");
+        System.out.printf(format, "Country", "Cases", "Cases", "Death", "Death", "Recovered", "Cases", "Critical", "1M pop", "1M pop", "Tests", "1M pop", "Population");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
     }
 }
