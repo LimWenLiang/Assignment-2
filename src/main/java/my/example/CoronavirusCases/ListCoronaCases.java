@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class ListCoronaCases {
 
     private final String CoronaCasesLink = "https://www.worldometers.info/coronavirus/";
-    private final String MalaysiaCase = "Malaysia";
-    private final String IndonesiaCase = "Indonesia";
-    private final String ChinaCase = "China";
+    private final String MalaysiaCases = "Malaysia";
+    private final String IndonesiaCases = "Indonesia";
+    private final String ChinaCases = "China";
     private Document document;
     private RegexMatches regexMatches;
     String format = "%9s\t%-12s%-12s%-12s%-11s%-14s%-12s%-12s%-14s%-12s%-12s%-10s%s%n";
@@ -32,9 +32,9 @@ public class ListCoronaCases {
 
         do {
             Elements CoronaCases = document.select("table#main_table_countries_today");
-            System.out.println("1. Malaysia");
-            System.out.println("2. Indonesia");
-            System.out.println("3. China");
+            System.out.println("1. View Malaysia Cases");
+            System.out.println("2. View Indonesia Cases");
+            System.out.println("3. View China Cases");
             System.out.println("4. Return Main Menu");
             System.out.printf("Please select your choice(1/2/3/4): ");
             int number = input.nextInt();
@@ -56,16 +56,18 @@ public class ListCoronaCases {
                 final String population = row.select("td:nth-child(15)").text();
 
                 if (number == 1) {
-                    // display Malaysia cases
-                    if (regexMatches.isMatch(MalaysiaCase, country) == true) {
+                    if (regexMatches.isMatch(MalaysiaCases, country) == true) {
+                        displayTime();
+                        System.out.println("Malaysia Cases Coronavirus Update (Live)");
                         displayCasesTitle();
                         System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
                                 activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
                         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
                     }
                 } else if (number == 2) {
-                    // display Indonesia cases
-                    if (regexMatches.isMatch(IndonesiaCase, country) == true) {
+                    if (regexMatches.isMatch(IndonesiaCases, country) == true) {
+                        displayTime();
+                        System.out.println("Indonesia Cases Coronavirus Update (Live)");
                         displayCasesTitle();
                         System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
                                 activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
@@ -73,8 +75,9 @@ public class ListCoronaCases {
 
                     }
                 } else if (number == 3) {
-                    // display China cases
-                    if (regexMatches.isMatch(ChinaCase, country) == true) {
+                    if (regexMatches.isMatch(ChinaCases, country) == true) {
+                        displayTime();
+                        System.out.println("China Cases Coronavirus Update (Live)");
                         displayCasesTitle();
                         System.out.printf(format, country, totalCases, newCases, totalDeaths, newDeaths, totalRecovered,
                                 activeCases, seriousCritical, totCases_1Mpop, deaths_1Mpop, totalTests, tests_1Mpop, population);
