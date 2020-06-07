@@ -24,7 +24,7 @@ public class ListCoronaCases {
         regexMatches = new RegexMatches();
         Scanner input = new Scanner(System.in);
         boolean stop = true;
-        int access;
+        int number;
 
         document = Jsoup.connect(CoronaCasesLink).get();
         displayTime();
@@ -37,7 +37,7 @@ public class ListCoronaCases {
             System.out.println("3. View China Cases");
             System.out.println("4. Return Main Menu");
             System.out.printf("Please select your choice(1/2/3/4): ");
-            int number = input.nextInt();
+            number = input.nextInt();
             System.out.println("");
 
             for (Element row : CoronaCases.select("tr")) {

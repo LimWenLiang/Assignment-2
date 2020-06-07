@@ -7,6 +7,15 @@
 ## Introduction
 
 ## Flow Diagram of the requirements
+##### MainMenu<br/>
+![output](images/FlowDiagram_MainMenu.png)<br/><br/>
+
+##### ListCoronaCases<br/>
+![output](images/FlowDiagram_ListCoronaCases.png)<br/><br/>
+
+##### RegexMatches<br/>
+![output](images/FlowDiagram_RegexMatches.png)<br/><br/>
+
 
 ## User manual 
 ![output](images/User_Manual_1.PNG)<br/>
