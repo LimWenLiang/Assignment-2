@@ -6,15 +6,16 @@
 
 ## Introduction
 
+
 ## Flow Diagram of the requirements
-#### MainMenu<br/>
-![output](images/FlowDiagram_MainMenu.png)<br/><br/>
+#### RegexMatches<br/>
+![output](images/FlowDiagram_RegexMatches.png)<br/><br/>
 
 #### ListCoronaCases<br/>
 ![output](images/FlowDiagram_ListCoronaCases.png)<br/><br/>
 
-#### RegexMatches<br/>
-![output](images/FlowDiagram_RegexMatches.png)<br/><br/>
+#### MainMenu<br/>
+![output](images/FlowDiagram_MainMenu.png)<br/><br/>
 
 
 ## User manual 
@@ -26,6 +27,7 @@ Insert number "2" to exit the system.<br/><br/>
 Insert number "1-3" to view Coronavirus cases from 3 different countries.<br/>
 Insert number "4" to return back Main Menu.<br/><br/>
 
+
 ## Result/Output
 Malaysia Cases
 ![output](images/output_Malaysia.PNG)
@@ -36,10 +38,13 @@ Indonesia Cases
 China Cases
 ![output](images/output_China.PNG)
 
+
 ## UML Class Diagram
 ![output](images/UML_Class_Diagram.PNG)
 
+
 ## Youtube Presentation
+
 
 ## References
 1. https://jsoup.org/

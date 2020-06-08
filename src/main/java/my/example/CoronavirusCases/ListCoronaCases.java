@@ -23,7 +23,7 @@ public class ListCoronaCases {
 
         regexMatches = new RegexMatches();
         Scanner input = new Scanner(System.in);
-        boolean stop = true;
+        boolean stop = false;
         int number;
 
         document = Jsoup.connect(CoronaCasesLink).get();
@@ -84,14 +84,14 @@ public class ListCoronaCases {
                         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
                     }
                 } else if (number == 4) {
-                    stop = false;
+                    stop = true;
                 } else {
                     System.out.println("Invalid input, please try again.\n");
                     Thread.sleep(1000);
                     break;
                 }
             }
-        } while (stop != false);
+        } while (stop != true);
     }
 
     public void displayTime() {
