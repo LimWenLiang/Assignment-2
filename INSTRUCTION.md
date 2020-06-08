@@ -12,7 +12,7 @@ You are required to develop a program using __MAVEN__ and __Java__ programming l
 
 2. Write a Java program to read all the data from the table as shown below (example)
 
-![Example](https://github.com/STIW3054-A192/Template-STIW3054-Assignment2/blob/master/images/Covid-19.png)
+![Example](https://github.com/STIW3054-A192/stiw3054-assignment2-LimWenLiang/blob/master/images/Covid-19.png)
 
 3. Then display all information from Malaysia, Indonesia and China.
  
