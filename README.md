@@ -5,7 +5,7 @@
 2. Other related info (if any)
 
 ## Introduction
-This program runs in IntelliJ Version 2020.1.2 (jdk 14) with Maven Version 1.11.3 Java programming language.
+This program runs in IntelliJ Version 2020.1.2 (jdk 14) with Maven Version 1.11.3 and Java programming language.
 
 ## Flow Diagram of the requirements
 #### RegexMatches<br/>
