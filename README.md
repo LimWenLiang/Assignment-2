@@ -47,5 +47,5 @@ China Cases
 https://www.youtube.com/watch?v=XejxX_Bguj4&feature=youtu.be
 
 ## References
-1. https://jsoup.org/
-2. https://www.tutorialspoint.com/java/index.htm
+1. Jonathan Hedley. (n.d.). jsoup: Java HTML Parser. Retrieved June 8, 2020, from https://jsoup.org/
+2. Tutorials Point. (n.d.). Java Tutorial. Retrieved Jun 8, 2020, from https://www.tutorialspoint.com/java/index.htm
